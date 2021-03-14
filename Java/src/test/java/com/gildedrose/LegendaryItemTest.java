@@ -24,37 +24,37 @@ public class LegendaryItemTest {
     @Test
     void testLegendaryItem2Days() {
         //Given
-        Item vest = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_0);
+        Item legendaryItem = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_0);
 
         //When
-        updateItemNumberOfDays(vest, TWO_DAYS_PASSED);
+        updateItemNumberOfDays(legendaryItem, TWO_DAYS_PASSED);
 
         //Then
-        assertLegendaryItem(vest);
+        assertLegendaryItem(legendaryItem);
     }
 
     @Test
     void testItemNegativeSellIn() {
         //Given
-        Item vest = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_NEGATIVE);
+        Item legendaryItem = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_NEGATIVE);
 
         //When
-        updateItemNumberOfDays(vest, SIX_DAYS_PASSED);
+        updateItemNumberOfDays(legendaryItem, SIX_DAYS_PASSED);
 
         //Then
-        assertLegendaryItem(vest);
+        assertLegendaryItem(legendaryItem);
     }
 
     @Test
     void testLegendaryItemQualityNotNegative() {
         //Given
-        Item vest = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_0);
+        Item legendaryItem = itemFixtures.getItemForTesting(itemFixtures.LEGENDARY_ITEM_0);
 
         //When
-        updateItemNumberOfDays(vest, FIFTY_DAYS_PASSED);
+        updateItemNumberOfDays(legendaryItem, FIFTY_DAYS_PASSED);
 
         //Then
-        assertLegendaryItem(vest);
+        assertLegendaryItem(legendaryItem);
     }
 
     //Given
