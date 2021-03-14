@@ -23,27 +23,8 @@ class GildedRose {
                 GildedRoseItem agedBrie = AgedBrieItem.of(item);
                 agedBrie.updateQuality();
             }  else if (isConcertItem(item)){
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-
-                    if (isConcertItem(item)) {
-                        if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-
-                        if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
-                        }
-                    }
-
-                    if (item.sellIn < 0) {
-                        item.quality = item.quality - item.quality;
-                    }
-                }
+                GildedRoseItem concertItem = ConcertItem.of(item);
+                concertItem.updateQuality();
             }
         }
     }
