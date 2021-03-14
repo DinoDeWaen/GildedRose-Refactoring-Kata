@@ -12,6 +12,9 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
+            if (!isLegendaryItem(item)) {
+                item.sellIn = item.sellIn - 1;
+            }
             if (isNormalItem(item)) {
                 if (item.quality > 0) {
                         item.quality = item.quality - 1;
@@ -40,9 +43,6 @@ class GildedRose {
                 }
             }
 
-            if (!isLegendaryItem(item)) {
-                item.sellIn = item.sellIn - 1;
-            }
 
             if (item.sellIn < 0) {
                 if (!isAged_brie(item)) {
