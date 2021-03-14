@@ -3,7 +3,7 @@ package com.gildedrose;
 public class AgedBrieItem implements GildedRoseItem {
     private final Item item;
 
-    public AgedBrieItem(Item item) {
+    private AgedBrieItem(Item item) {
         this.item = item;
     }
 
@@ -17,6 +17,7 @@ public class AgedBrieItem implements GildedRoseItem {
             item.quality = item.quality + 1;
         }
     }
+
     public static GildedRoseItem of(Item item) {
         return new AgedBrieItem(item);
     }
