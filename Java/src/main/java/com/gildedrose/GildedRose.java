@@ -2,6 +2,7 @@ package com.gildedrose;
 
 class GildedRose {
     public static final String AGED_BRIE = "Aged Brie";
+    public static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     Item[] items;
 
     public GildedRose(Item[] items) {
@@ -13,7 +14,7 @@ class GildedRose {
             if (!isAged_brie(item)
                     && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality > 0) {
-                    if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                    if (!isLegendaryItem(item)) {
                         item.quality = item.quality - 1;
                     }
                 }
@@ -37,7 +38,7 @@ class GildedRose {
                 }
             }
 
-            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+            if (!isLegendaryItem(item)) {
                 item.sellIn = item.sellIn - 1;
             }
 
@@ -45,7 +46,7 @@ class GildedRose {
                 if (!isAged_brie(item)) {
                     if (!item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.quality > 0) {
-                            if (!item.name.equals("Sulfuras, Hand of Ragnaros")) {
+                            if (!isLegendaryItem(item)) {
                                 item.quality = item.quality - 1;
                             }
                         }
@@ -59,6 +60,10 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private boolean isLegendaryItem(Item item) {
+        return item.name.equals(SULFURAS_HAND_OF_RAGNAROS);
     }
 
     private boolean isAged_brie(Item item) {
