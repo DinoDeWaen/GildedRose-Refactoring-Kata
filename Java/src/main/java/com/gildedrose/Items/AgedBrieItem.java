@@ -9,15 +9,25 @@ public class AgedBrieItem implements GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        item.sellIn = item.sellIn - 1;
+        reduceSellIn();
 
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
-        }
+        inCreaseQuality();
 
-        if (item.sellIn < 0 && item.quality < 50) {
-            item.quality = item.quality + 1;
+        if (isExpired()) {
+            inCreaseQuality();
         }
+    }
+
+    private boolean isExpired() {
+        return item.sellIn < 0;
+    }
+
+    private void inCreaseQuality() {
+        item.quality = Math.min(item.quality + 1, 50);
+    }
+
+    private void reduceSellIn() {
+        --item.sellIn;
     }
 
     public static GildedRoseItem of(Item item) {
