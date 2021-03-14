@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.Items;
 
 public class AgedBrieItem implements GildedRoseItem {
     private final Item item;
@@ -9,6 +9,8 @@ public class AgedBrieItem implements GildedRoseItem {
 
     @Override
     public void updateQuality() {
+        item.sellIn = item.sellIn - 1;
+
         if (item.quality < 50) {
             item.quality = item.quality + 1;
         }

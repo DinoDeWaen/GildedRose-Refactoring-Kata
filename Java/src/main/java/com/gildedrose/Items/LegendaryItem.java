@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.Items;
 
 public class LegendaryItem implements GildedRoseItem{
 
