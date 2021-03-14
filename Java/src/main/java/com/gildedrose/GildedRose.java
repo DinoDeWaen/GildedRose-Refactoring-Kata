@@ -20,13 +20,8 @@ class GildedRose {
                 GildedRoseItem normalItem = NormalItem.of(item);
                 normalItem.updateQuality();
             } else if (isAged_brie(item)) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-
-                if (item.sellIn < 0 && item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                GildedRoseItem agedBrie = AgedBrieItem.of(item);
+                agedBrie.updateQuality();
             }  else if (isConcertItem(item)){
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
