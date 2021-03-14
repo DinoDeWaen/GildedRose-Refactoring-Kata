@@ -9,27 +9,29 @@ public class ConcertItem implements GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        item.sellIn = item.sellIn - 1;
+        decreaseSellIn();
 
-        if (item.quality < 50) {
-            item.quality = item.quality + 1;
+        decreaseQuality();
 
-            if (item.sellIn < 11) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-
-            if (item.sellIn < 6) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
-            }
-
-            if (item.sellIn < 0) {
-                item.quality = item.quality - item.quality;
-            }
+        if (item.sellIn < 11) {
+            decreaseQuality();
         }
+
+        if (item.sellIn < 6) {
+            decreaseQuality();
+        }
+
+        if (item.sellIn < 0) {
+            item.quality = item.quality - item.quality;
+        }
+    }
+
+    private void decreaseQuality() {
+        item.quality = Math.min(item.quality + 1, 50);
+    }
+
+    private void decreaseSellIn() {
+        --item.sellIn;
     }
 
     public static GildedRoseItem of(Item item) {
