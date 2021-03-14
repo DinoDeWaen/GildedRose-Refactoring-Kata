@@ -16,7 +16,11 @@ class GildedRose {
                 if (item.quality > 0) {
                         item.quality = item.quality - 1;
                 }
-            } else {
+            } else if (isAged_brie(item)) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1;
+                }
+            }  else if (isConcertItem(item)){
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
