@@ -9,14 +9,24 @@ public class NormalItem implements GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        item.sellIn = item.sellIn - 1;
+        decreaseSellIn();
 
-        if (item.quality > 0) {
-            item.quality = item.quality - 1;
-            if (item.sellIn < 0 && item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
+        decreaseQuality();
+        if (isExpired()) {
+            decreaseQuality();
         }
+    }
+
+    private boolean isExpired() {
+        return item.sellIn < 0;
+    }
+
+    private void decreaseQuality() {
+        item.quality = Math.max(item.quality - 1, 0);
+    }
+
+    private void decreaseSellIn() {
+        --item.sellIn;
     }
 
     public static GildedRoseItem of(Item item) {
