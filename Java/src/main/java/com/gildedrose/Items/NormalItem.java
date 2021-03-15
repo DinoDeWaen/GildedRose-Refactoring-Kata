@@ -10,11 +10,7 @@ public class NormalItem implements GildedRoseItem {
     @Override
     public void updateQuality() {
         decreaseSellIn();
-
         decreaseQuality();
-        if (isExpired()) {
-            decreaseQuality();
-        }
     }
 
     private boolean isExpired() {
@@ -22,7 +18,9 @@ public class NormalItem implements GildedRoseItem {
     }
 
     private void decreaseQuality() {
-        item.quality = Math.max(item.quality - 1, 0);
+        int qualityDecrease = isExpired()?2:1;
+
+        item.quality = Math.max(item.quality - qualityDecrease, 0);
     }
 
     private void decreaseSellIn() {

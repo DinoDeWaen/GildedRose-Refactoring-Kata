@@ -10,28 +10,35 @@ public class ConcertItem implements GildedRoseItem {
     @Override
     public void updateQuality() {
         decreaseSellIn();
-
         decreaseQuality();
-
-        if (item.sellIn < 11) {
-            decreaseQuality();
-        }
-
-        if (item.sellIn < 6) {
-            decreaseQuality();
-        }
-
-        if (item.sellIn < 0) {
-            item.quality = item.quality - item.quality;
-        }
     }
 
     private void decreaseQuality() {
-        item.quality = Math.min(item.quality + 1, 50);
+        int qualityIncrease = getFactor();
+
+        if (item.sellIn < 0) {
+            setQualityToZero();
+        } else {
+            item.quality = Math.min(item.quality + qualityIncrease, 50);
+        }
     }
 
     private void decreaseSellIn() {
         --item.sellIn;
+    }
+
+    private int getFactor() {
+        if (item.sellIn < 6) {
+            return 3;
+        } else if (item.sellIn < 11) {
+            return 2;
+        } else {
+            return 1;
+        }
+    }
+
+    private void setQualityToZero() {
+        item.quality = 0;
     }
 
     public static GildedRoseItem of(Item item) {

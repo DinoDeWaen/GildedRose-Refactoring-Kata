@@ -13,7 +13,6 @@ public class ConcertItemTest {
 
     public static final int TWO_DAYS_PASSED = 2;
     private static final int SIX_DAYS_PASSED = 6;
-    private static final int FIFTY_DAYS_PASSED = 50;
     private NormalItemFixtures itemFixtures;
 
     @BeforeEach

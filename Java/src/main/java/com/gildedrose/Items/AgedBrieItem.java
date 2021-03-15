@@ -9,13 +9,8 @@ public class AgedBrieItem implements GildedRoseItem {
 
     @Override
     public void updateQuality() {
-        reduceSellIn();
-
+        decreaseSellIn();
         inCreaseQuality();
-
-        if (isExpired()) {
-            inCreaseQuality();
-        }
     }
 
     private boolean isExpired() {
@@ -23,10 +18,12 @@ public class AgedBrieItem implements GildedRoseItem {
     }
 
     private void inCreaseQuality() {
-        item.quality = Math.min(item.quality + 1, 50);
+        int qualityIncrease = isExpired()?2:1;
+
+        item.quality = Math.min(item.quality + qualityIncrease, 50);
     }
 
-    private void reduceSellIn() {
+    private void decreaseSellIn() {
         --item.sellIn;
     }
 
