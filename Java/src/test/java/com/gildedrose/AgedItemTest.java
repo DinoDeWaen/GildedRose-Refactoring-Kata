@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.equalTo;
 public class AgedItemTest {
 
     public static final int TWO_DAYS_PASSED = 2;
+    public static final int SIX_DAYS_PASSED = 6;
     private static final int FIFTY_DAYS_PASSED = 50;
     private AgedItemFixtures itemFixtures;
 
@@ -30,6 +31,18 @@ public class AgedItemTest {
 
         //Then
         assertAgedItemDecrease(brie, itemFixtures.AGED_BRIE_ITEM, TWO_DAYS_PASSED);
+    }
+
+    @Test
+    void testAgedDoubleValues() {
+        //Given
+        Item brie = itemFixtures.getItemForTesting(itemFixtures.AGED_BRIE_ITEM);
+
+        //When
+        updateItemNumberOfDays(brie, SIX_DAYS_PASSED);
+
+        //Then
+        assertAgedItemDoubleIncrease(brie, itemFixtures.AGED_BRIE_ITEM, SIX_DAYS_PASSED, 10);
     }
 
     @Test
@@ -56,6 +69,12 @@ public class AgedItemTest {
     //Then
     private void assertAgedItemDecrease(Item testedItem, Item originalItem, int dayspassed) {
         assertThat(String.format("quality increased with %d days", dayspassed),testedItem.quality, equalTo(originalItem.quality + dayspassed));
+        assertThat(String.format("sell in decreased with %d days", dayspassed),testedItem.sellIn, equalTo(originalItem.sellIn -dayspassed));
+    }
+
+    //Then
+    private void assertAgedItemDoubleIncrease(Item testedItem, Item originalItem, int dayspassed, int quality) {
+        assertThat(String.format("quality increased with %d days", dayspassed),testedItem.quality, equalTo(quality));
         assertThat(String.format("sell in decreased with %d days", dayspassed),testedItem.sellIn, equalTo(originalItem.sellIn -dayspassed));
     }
 
