@@ -9,6 +9,7 @@ import java.util.stream.IntStream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+
 public class ConjuredItemTest {
 
     public static final int TWO_DAYS_PASSED = 2;
@@ -60,15 +61,15 @@ public class ConjuredItemTest {
     }
 
     private void assertSellInPassed(Item testedItem, Item originalItem, int dayspassed) {
-        assertThat(String.format("is zero", dayspassed),testedItem.quality, equalTo(0));
+        assertThat(String.format("is 8", dayspassed),testedItem.quality, equalTo(6));
         assertThat(String.format("sell in decreased with %d days", dayspassed),testedItem.sellIn, equalTo(originalItem.sellIn - dayspassed));
     }
 
     private class NormalItemFixtures {
-        public static final int SELLIN_3 = 5;
-        public static final int QUALITY_6 = 6;
+        public static final int SELLIN_5 = 5;
+        public static final int QUALITY_20 = 20;
 
-        public final Item CONJURED_ITEM = getItem("Conjured Mana Cake", SELLIN_3, QUALITY_6);
+        public final Item CONJURED_ITEM = getItem("Conjured Mana Cake", SELLIN_5, QUALITY_20);
 
         public Item getItemForTesting (Item item) {
             return new Item(item.name, item.sellIn, item.quality);
