@@ -28,9 +28,9 @@ public class ConcertItem implements GildedRoseItem {
     }
 
     private int getFactor() {
-        if (item.sellIn < 6) {
+        if (item.sellIn < 5) {
             return 3;
-        } else if (item.sellIn < 11) {
+        } else if (item.sellIn < 10) {
             return 2;
         } else {
             return 1;
