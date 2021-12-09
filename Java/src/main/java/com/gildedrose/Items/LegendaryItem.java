@@ -1,6 +1,6 @@
 package com.gildedrose.Items;
 
-public class LegendaryItem implements GildedRoseItem{
+class LegendaryItem implements GildedRoseItem{
 
     @Override
     public void updateQuality() {

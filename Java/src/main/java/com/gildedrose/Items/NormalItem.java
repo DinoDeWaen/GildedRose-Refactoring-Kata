@@ -1,6 +1,6 @@
 package com.gildedrose.Items;
 
-public class NormalItem implements GildedRoseItem {
+class NormalItem implements GildedRoseItem {
     Item item;
 
     private NormalItem(Item item) {
