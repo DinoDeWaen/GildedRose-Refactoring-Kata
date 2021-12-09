@@ -12,6 +12,8 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        Arrays.stream(items).map(ItemFactory::mapToGildedRoseItem).forEach(gildedRoseItem ->gildedRoseItem.updateQuality());
+        Arrays.stream(items)
+                .map(ItemFactory::mapToGildedRoseItem)
+                .forEach(gildedRoseItem ->gildedRoseItem.updateQuality());
     }
 }
